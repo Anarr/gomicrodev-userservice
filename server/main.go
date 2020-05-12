@@ -2,10 +2,13 @@ package server
 
 import (
 	u "github.com/Anarr/gomicrodev-userservice/proto/user"
+	s "github.com/Anarr/gomicrodev-userservice"
 	"log"
 	"net"
 	"google.golang.org/grpc"
 )
+
+var users []*u.User
 
 func init() {
 	u := []*u.User{
@@ -37,7 +40,7 @@ func Serve() error {
 	}
 
 	server := grpc.NewServer()
-	u.RegisterUserServiceServer(server, new(UserService))
+	u.RegisterUserServiceServer(server, new(s.UserService))
 
 	if err = server.Serve(list); err != nil {
 		log.Println("server err: ", err)

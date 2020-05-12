@@ -3,9 +3,6 @@ package userservice_grpc
 import (
 	"context"
 	u "github.com/Anarr/gomicrodev-userservice/proto/user"
-	"google.golang.org/grpc"
-	"log"
-	"net"
 )
 
 type UserService struct{}
